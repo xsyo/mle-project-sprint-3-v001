@@ -1,10 +1,17 @@
 import requests
 import time
 
-for i in range(3):
+import pandas as pd
+
+
+data = pd.read_csv("data/data_for_requests.csv", index_col='flat_id')
+
+for flat_id, row in data.iterrows():
     params = {
-        'x': str(i),
-        'y': '2',
+        "user_id": str(flat_id),
+        'params_model': row.to_dict()
     }
-    response = requests.get('http://localhost:1702/predict', params=params)
-    time.sleep(10)
+    response = requests.post('http://localhost:4558/', json=params)
+    time.sleep(1)
+
+

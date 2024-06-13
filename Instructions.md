@@ -50,4 +50,31 @@ curl -X 'POST' \
 ```
 
 ### 2. FastAPI микросервис в Docker-контейнере
-...
+
+Нужно для начала создать файл ```.env``` в котором будут указаны порт и автор в параметрах ```APP_PORT``` и ```AUTHOR``` соответсвенно.
+
+
+Теперь нужно собрать образ с помощью команды:
+```
+docker image build . -f Dockerfile_ml_service --tag fastapi_service:v1
+```
+
+После запускаем контейнер командой:
+```
+docker container run --publish 4555:4555 --env-file .env --volume=./models:/app/models  fastapi_service:v1
+```
+
+
+Запуск контейнера с помощью docker compose:
+```
+docker compose up --build
+```
+
+### Этап 3. Запуск сервисов для системы мониторинга
+
+Для начала нужно добавить в файл ```.env``` переменные ```GRAFANA_USER``` и ```GRAFANA_PASS``` с именем пользователя и паролем.
+
+После запустить все с помощью команды:
+```
+docker compose up --build
+```
