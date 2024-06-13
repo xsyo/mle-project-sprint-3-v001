@@ -11,7 +11,7 @@ for flat_id, row in data.iterrows():
         "user_id": str(flat_id),
         'params_model': row.to_dict()
     }
-    response = requests.post('http://localhost:4558/', json=params)
+    response = requests.post('http://localhost:4555/', json=params)
     time.sleep(1)
 
 
