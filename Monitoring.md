@@ -10,4 +10,4 @@
 
 Потребление RAM и Потребление CPU - для наблюдения ресурсов сервера
 
-
+Файл с дашбордом ```dashboard.json``` находится по пути ```./services/dashboard_data/dashboard.json```
